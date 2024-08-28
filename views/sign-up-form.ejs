@@ -11,9 +11,18 @@
     <input id="user_name" name="user_name" type="text" required/>
     <label for="password">Password</label>
     <input id="password" name="password" type="password" required/>
+    <label for="confirmPassword">Confirm Password</label>
+    <input id="confirmPassword" name="confirmPassword" type="confirmPassword" required/>
     <input type="checkbox" id="isAdmin" name="isAdmin" value="true" />
     <label for="isAdmin">Admin</label>
     <button>Sign Up</button>
   </form>
+  <% if (locals.errors) {%>
+  <ul>
+    <% errors.forEach(function(error) { %>
+      <li><%= error.msg %></li>
+    <% }); %>
+  </ul>
+  <% } %>
 </body>
 </html>
