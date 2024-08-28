@@ -20,6 +20,11 @@ async function getAllMessages() {
   return messages;
 };
 
+async function insertNewUser(user_name, hashedPassword, isAdmin) {
+  await pool.query("INSERT INTO users (user_name, user_password, isAdmin) VALUES ($1, $2, $3)", [user_name, hashedPassword, isAdmin]);
+}
+
 module.exports = {
   getAllMessages,
+  insertNewUser
 };

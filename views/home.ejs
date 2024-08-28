@@ -6,6 +6,20 @@
   <body>
     <%- include('header') %>
     <main>
+      <% if (user) {%>
+        <h1>WELCOME BACK <%= user.username %></h1>
+        <a href="/log-out">LOG OUT</a>
+      <% } else { %>
+        <h3>Log in</h3>
+        <form action="/log-in" method="POST">
+          <label for="username">Username</label>
+          <input id="username" name="username" placeholder="username" type="text" />
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" />
+          <button>Log In</button>
+        </form>
+        <button onclick="window.location.href='/sign-up';">Sign Up</button>
+      <%}%>
       <ul class="messageBoard">
         <% messages.forEach( (message) => { %>
           <!-- <&- include('message, {message: message}') -->
