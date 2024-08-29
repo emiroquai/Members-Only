@@ -1,6 +1,8 @@
 const db = require("../db/queries");
 const bcrypt = require("bcryptjs")
 const { body, validationResult } = require("express-validator");
+const passport = require('../configs/passport.config');
+const asyncHandler = require('express-async-handler');
 
 async function getHome (req, res) {
   const messages = await db.getAllMessages();
@@ -11,6 +13,7 @@ async function getSignUp (req, res) {
   res.render("sign-up-form");
 };
 
+// Validators
 const confirmPassword = [
   body('password').isLength({ min:5 }).withMessage('Password must have minimum 5 characters.'),
   body('confirmPassword').custom((value, { req }) => {
@@ -39,6 +42,20 @@ async function postSignUp (req, res, next) {
   });
 };
 
+// Authenticate user
+const logInUser = passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "/"
+});
+
+const logOutUser = asyncHandler(async (req, res, next) => {
+  req.logout((err) => {
+    if(err)
+      return next(err);
+    res.redirect('/');
+  });
+});
+
 
 
 module.exports = {
@@ -46,4 +63,6 @@ module.exports = {
   getSignUp,
   confirmPassword,
   postSignUp,
+  logInUser,
+  logOutUser
 }
