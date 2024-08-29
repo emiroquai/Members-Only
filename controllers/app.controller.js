@@ -56,8 +56,6 @@ const logOutUser = asyncHandler(async (req, res, next) => {
   });
 });
 
-
-
 module.exports = {
   getHome,
   getSignUp,
