@@ -60,7 +60,13 @@ const postMessage = asyncHandler(async (req, res, next) => {
   const { message_text } = req.body;
   await db.insertMessage(req.user.user_id, message_text);
   res.redirect("/");
-})
+});
+
+const postDeleteMessage = asyncHandler(async (req, res, next) => {
+  const message_id = Number(req.params.message_id)
+  await db.deleteMessage(message_id)
+  res.redirect('/');
+});
 
 module.exports = {
   getHome,
@@ -69,5 +75,6 @@ module.exports = {
   postSignUp,
   logInUser,
   logOutUser,
-  postMessage
+  postMessage,
+  postDeleteMessage
 }

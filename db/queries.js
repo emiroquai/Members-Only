@@ -42,10 +42,16 @@ async function insertMessage(user_id, message_text) {
   await pool.query(query, [ user_id, message_text ]);
 }
 
+async function deleteMessage(message_id) {
+  const query = 'DELETE FROM messages WHERE message_id = $1'
+  await pool.query(query, [ message_id ]);
+}
+
 module.exports = {
   getAllMessages,
   insertNewUser,
   getUserByID,
   getUserByUsername,
-  insertMessage
+  insertMessage,
+  deleteMessage
 };

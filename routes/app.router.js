@@ -12,4 +12,6 @@ router.get('/log-out', controller.logOutUser);
 
 router.post('/new-message', controller.postMessage);
 
+router.post('/:message_id/delete', controller.postDeleteMessage)
+
 module.exports = router;

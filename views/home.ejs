@@ -23,11 +23,16 @@
       <%}%>
       <ul class="messageBoard">
         <% messages.forEach( (message) => { %>
-          <!-- <&- include('message, {message: message}') -->
            <li class="message">
             <% if (user) {%>
               <p><%= message.user_name %></p>
               <p><%= message.message_date.toLocaleString('en-GB', { timeZone: 'UTC' }) %></p>
+              <% if (user.isadmin) {%>
+                <form id="deleteMessageForm" action="./<%= message.message_id %>/delete" method="POST">
+                  <input type="hidden" id="message_id" name="message_id" value="<%= message.message_id %>">
+                  <button class="btn delete" type="submit">Delete</button>
+                </form>
+              <%};%>
             <% } else { %>
               <p>*********</p>
             <%}%>
