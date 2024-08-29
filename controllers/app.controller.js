@@ -56,11 +56,18 @@ const logOutUser = asyncHandler(async (req, res, next) => {
   });
 });
 
+const postMessage = asyncHandler(async (req, res, next) => {
+  const { message_text } = req.body;
+  await db.insertMessage(req.user.user_id, message_text);
+  res.redirect("/");
+})
+
 module.exports = {
   getHome,
   getSignUp,
   confirmPassword,
   postSignUp,
   logInUser,
-  logOutUser
+  logOutUser,
+  postMessage
 }

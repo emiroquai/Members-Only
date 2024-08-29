@@ -9,6 +9,7 @@
       <% if (user) {%>
         <h1>WELCOME BACK <%= user.user_name %></h1>
         <a href="/log-out">LOG OUT</a>
+        <%- include('new-message-form') %>
       <% } else { %>
         <h3>Log in</h3>
         <form action="/log-in" method="POST">
@@ -24,7 +25,12 @@
         <% messages.forEach( (message) => { %>
           <!-- <&- include('message, {message: message}') -->
            <li class="message">
-            <p><%= message.user_name %></p>
+            <% if (user) {%>
+              <p><%= message.user_name %></p>
+              <p><%= message.message_date.toLocaleString('en-GB', { timeZone: 'UTC' }) %></p>
+            <% } else { %>
+              <p>*********</p>
+            <%}%>
             <p><%= message.message_text %></p>
            </li>
         <% }); %>

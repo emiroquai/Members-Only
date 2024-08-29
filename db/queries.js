@@ -5,7 +5,8 @@ async function getAllMessages() {
     SELECT 
       messages.message_id, 
       users.user_name, 
-      messages.message_text 
+      messages.message_text,
+      messages.message_date 
     FROM
       messages
     INNER JOIN 
@@ -32,14 +33,19 @@ async function getUserByID(id) {
 
 async function getUserByUsername(username) {
   const query = 'SELECT * FROM users WHERE user_name = $1';
-  // INJECTION ATTACK SAFE METHOD FOR CUSTOMIZABLE QUERIES
   const { rows } = await pool.query(query, [username]);
   return rows[0];
+}
+
+async function insertMessage(user_id, message_text) {
+  const query = 'INSERT INTO messages (user_id, message_text) VALUES ($1, $2)';
+  await pool.query(query, [ user_id, message_text ]);
 }
 
 module.exports = {
   getAllMessages,
   insertNewUser,
   getUserByID,
-  getUserByUsername
+  getUserByUsername,
+  insertMessage
 };
