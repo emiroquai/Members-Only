@@ -6,7 +6,7 @@
       <div class="home-left">
         <% if (user) {%>
           <div class="welcome-user">
-            <h2>Welcome back, <%= user.user_name %></h1>
+            <h2>Welcome, <%= user.user_name %></h1>
             <button class="button-9" onclick="window.location.href='/log-out';">Log Out</button>        </div>
           <%- include('new-message-form') %>
         <% } else { %>

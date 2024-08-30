@@ -33,8 +33,14 @@ async function postSignUp (req, res, next) {
   const isAdmin = req.body.isAdmin === 'true';
   bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
     try {
-      await db.insertNewUser( req.body.user_name, hashedPassword, isAdmin);
-      res.redirect("/");
+      const newUser = await db.insertNewUser( req.body.user_name, hashedPassword, isAdmin);
+      // Automatically log in the user after sign-up
+      req.login(newUser, (err) => {
+        if (err) {
+          return next(err);
+        }
+        return res.redirect("/");
+      });
     } catch(err) {
       console.log(err);
       return next(err);

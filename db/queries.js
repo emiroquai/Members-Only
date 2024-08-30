@@ -23,6 +23,8 @@ async function getAllMessages() {
 
 async function insertNewUser(user_name, hashedPassword, isAdmin) {
   await pool.query("INSERT INTO users (user_name, user_password, isAdmin) VALUES ($1, $2, $3)", [user_name, hashedPassword, isAdmin]);
+  const newUser = getUserByUsername(user_name);
+  return newUser;
 }
 
 async function getUserByID(id) {
