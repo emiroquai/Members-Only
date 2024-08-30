@@ -41,8 +41,8 @@ main {
   padding: 0px 15px;
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 15px;
-  margin-bottom: 15px;
+  gap: 30px;
+  margin-bottom: 30px;
 }
 
 .welcome-user {
@@ -218,6 +218,8 @@ textarea {
   border: none;
   border-radius: 10px;
   resize: none;
+  font-family: inherit;
+  padding: 15px;
 }
 
 .newMessageTextBox {
