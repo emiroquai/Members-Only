@@ -220,6 +220,8 @@ textarea {
   resize: none;
   font-family: inherit;
   padding: 15px;
+  font-family: inherit;
+  padding: 15px;
 }
 
 .newMessageTextBox {
