@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Sign Up</title>
-</head>
+<%- include('head') %>
 <body>
-  <h1>Sign Up</h1>
-  <form action="" method="POST">
-    <label for="username">Username</label>
-    <input id="user_name" name="user_name" type="text" required/>
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" required/>
-    <label for="confirmPassword">Confirm Password</label>
-    <input id="confirmPassword" name="confirmPassword" type="confirmPassword" required/>
-    <input type="checkbox" id="isAdmin" name="isAdmin" value="true" />
-    <label for="isAdmin">Admin</label>
-    <button>Sign Up</button>
-  </form>
+  <%- include('header') %>
+  <div class="login-box">
+    <h2>Sign Up</h2>
+    <form class="sign-in" action="" method="POST">
+      <div class="user-box">
+        <input id="user_name" name="user_name" type="text" required=""/>
+        <label>Username</label>
+      </div>
+      <div class="user-box">
+        <input id="password" name="password" type="password" required/>
+        <label for="password">Password</label>
+      </div>
+      <div class="user-box">
+        <input id="confirmPassword" name="confirmPassword" type="confirmPassword" required/>
+        <label for="confirmPassword">Confirm Password</label>
+      </div>
+      <div>
+        <input type="checkbox" id="isAdmin" name="isAdmin" value="true" />
+        <label for="isAdmin">Admin</label>
+      </div>
+      <button class="button-9">Sign Up</button>
+    </form>
+  </div>
   <% if (locals.errors) {%>
   <ul>
     <% errors.forEach(function(error) { %>
