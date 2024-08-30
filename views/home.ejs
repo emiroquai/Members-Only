@@ -33,8 +33,12 @@
       </div>
       <div class="home-right">
         <ul class="messageBoard">
+          <% if (messages.length === 0) {%>
+            <p>There are no messages, be first to write one.</p>
+          <%};%>
           <% messages.forEach( (message) => { %>
             <li class="message">
+
             <% if (user) {%>
               <p class="author">🕶️ <%= message.user_name %></p>
               <div class="messageTextContainer">
