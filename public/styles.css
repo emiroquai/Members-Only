@@ -1,9 +1,11 @@
 :root {
   --accent-color: rgba(255, 247, 0, 0.841);
   --main-bg-color: rgb(186, 186, 186);
+  --dark-grey: rgba(0,0,0,.5);
 }
 
 body {
+  height: 100vh;
   font-family: "Cabin", sans-serif;
   margin: 0;
   padding: 0;
@@ -36,6 +38,7 @@ main {
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 15px;
+  margin-bottom: 15px;
 }
 
 .welcome-user {
@@ -149,10 +152,10 @@ p a {
   background-color: #fff;
   width: 100%;
   padding: 15px;
+  padding-bottom: 30px;
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
-  height: 100%;
 }
 
 ul {
@@ -225,4 +228,11 @@ textarea {
   margin-top: 10px;
   width: fit-content;
   justify-self: center;
+}
+
+footer {
+  width: 100%;
+  margin-top: auto;
+  padding-left: 15px;
+  background-color: var(--dark-grey);
 }
