@@ -59,6 +59,7 @@ main {
   cursor: pointer;
   font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
   font-size: small;
+  font-weight: 600;
   height: 30px;
   line-height: 1.15;
   outline: none;
